@@ -1,21 +1,17 @@
-import { useFonts } from 'expo-font';
 import { Dimensions, StyleSheet } from "react-native";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-() => {
-    const [fontsLoaded] = useFonts({
-        'SommetRoundedRegular': require('../../../assets/fonts/SommetRoundedRegular.otf'),
-    });
-}
-
 export default StyleSheet.create({
     container: {
-        height: '50%',
+        flex: 1,
+        backgroundColor: '#d8d8d8',
+    },
+    inner_container: {
+        height:'95%',
         alignItems: 'center',
         justifyContent: 'center',
-
     },
     image: {
         width: width / 1.5,
@@ -23,32 +19,63 @@ export default StyleSheet.create({
         resizeMode: 'contain',
     },
     buttons_container: {
-        marginTop: 5,
+        marginTop: 10,
         display: 'flex',
         flexDirection: 'row',
     },
-    login_container: {
+    normal_login_container: {
         width: '30%',
+        backgroundColor: 'rgba(252, 190, 22, 0.65)',
         alignItems: 'center',
-        backgroundColor: '#fcbe16',
         padding: 7,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
-    login_text: {
+    active_login_container: {
+        width: '30%',
+        backgroundColor: '#e7e7e7',
+        alignItems: 'center',
+        padding: 7,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    normal_login_text: {
         color: '#333333',
         fontSize: 15,
-        fontFamily: 'SommetRoundedRegular',
+        fontWeight: '500',
     },
-    signUp_container: {
+    active_login_text: {
+        color: '#333333',
+        fontSize: 17,
+        fontWeight: '700',
+    },
+    normal_signup_container: {
         marginLeft: 20,
         width: '30%',
         alignItems: 'center',
         padding: 7,
-        backgroundColor: '#fcbe16',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        backgroundColor: 'rgba(252, 190, 22, 0.65)',
     },
-    signUp_text: {
+    active_signup_container: {
+        marginLeft: 20,
+        width: '30%',
+        alignItems: 'center',
+        padding: 7,
+        backgroundColor: '#e7e7e7',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+    normal_signup_text: {
         color: '#333333',
         fontSize: 15,
-        fontFamily: 'SommetRoundedRegular',
+        fontWeight: '500',
+    },
+    active_signup_text: {
+        color: '#333333',
+        fontSize: 17,
+        fontWeight: '700',
     },
 });
 
