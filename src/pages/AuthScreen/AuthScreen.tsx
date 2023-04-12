@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Image, Text, TouchableOpacity } from 'react-native';
-import styles from './LoginScreenStyles';
+import styles from './AuthScreenStyles';
 import SignIn from '../../components/SignIn';
 import SignUp from '../../components/SignUp';
 
-const LoginScreen = () => {
+const AuthScreen = () => {
 
     const [isOpenSignIn, setIsOpenSignIn] = useState<Boolean>(true);
     const [isOpenSignUp, setIsOpenSignUp] = useState<Boolean>(false);
@@ -40,6 +40,6 @@ const LoginScreen = () => {
     )
 }
 
-export default LoginScreen;
+export default AuthScreen;
 
 
