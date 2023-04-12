@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from '../pages/Login';
-import HomeScreen from '../pages/Home';
-import { RootStackParamList } from './types';
+import AuthStack from './AuthStack';
+import BottomTabs from './BottomTabs';
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase';
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigation = () => {
 
@@ -20,11 +16,8 @@ const AppNavigation = () => {
 
     }
   });
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {isLogin ? <Stack.Screen name='Home' component={HomeScreen} /> : <Stack.Screen name='Login' component={LoginScreen} />}
-    </Stack.Navigator>
-  )
+
+  return isLogin ? <BottomTabs /> : <AuthStack />;
 }
 
 export default AppNavigation;
