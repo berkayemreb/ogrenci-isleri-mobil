@@ -16,23 +16,16 @@ export default StyleSheet.create({
     },
     popUpContainer: {
         position: 'absolute',
-        top: 0,
-        left: 0,
         zIndex: 1,
         width: width,
         height: height,
         backgroundColor: 'rgba(0,16,35,0.6)',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     popUpInnerContainer: {
         padding: 10,
         width: 200,
         backgroundColor: 'white',
-        position: 'absolute',
-        top: '49%',
-        left: '49%',
-        transform: [
-            { translateX: - width * 0.25 },
-            { translateY: - height * - 0.01 }
-        ]
     }
 })

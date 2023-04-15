@@ -23,6 +23,7 @@ const CommunicationScreen = () => {
             {isOpen &&
                 <View style={styles.popUpContainer}>
                     <View style={styles.popUpInnerContainer}>
+                        <Text>Öğrenci İşleri</Text>
                         <Text>Çalışma Saatleri:</Text>
                         <Text>Telefon Numarası:</Text>
                         <Button title='KAPAT' onPress={() => setIsOpen(!isOpen)} />
