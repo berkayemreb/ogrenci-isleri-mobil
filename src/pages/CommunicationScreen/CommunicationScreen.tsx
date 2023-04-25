@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import styles from './CommunicationScreenStyles';
+import PopUp from '../../components/PopUp';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 const CommunicationScreen = () => {
 
@@ -18,17 +21,13 @@ const CommunicationScreen = () => {
         setIsOpen(!isOpen);
     }
 
+    const closePopUp = () => {
+        setIsOpen(!isOpen);
+    }
+
     return (
         <View style={styles.container}>
-            {isOpen &&
-                <View style={styles.popUpContainer}>
-                    <View style={styles.popUpInnerContainer}>
-                        <Text>Öğrenci İşleri</Text>
-                        <Text>Çalışma Saatleri:</Text>
-                        <Text>Telefon Numarası:</Text>
-                        <Button title='KAPAT' onPress={() => setIsOpen(!isOpen)} />
-                    </View>
-                </View>}
+            {isOpen && <PopUp title='Öğrenci İşleri Atölye' workingHoursIcon={<MaterialCommunityIcons name="clock-check-outline" size={20} color="#FF7F50" />} workingHoursText='08.00 - 02.30' phoneNumberIcon={<MaterialCommunityIcons name="phone-in-talk-outline" size={20} color="#FF7F50" />} phoneNumberText='0530 209 91 07' closePopUp={closePopUp} />}
             <MapView
                 style={styles.map}
                 region={region}
