@@ -4,9 +4,9 @@ import styles from './PopUpStyles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 interface PopUpTypes {
     title?: string;
-    workingHoursIcon?: any;
+    workingHoursIcon?: ReactNode;
     workingHoursText?: string;
-    phoneNumberIcon?: any;
+    phoneNumberIcon?: ReactNode;
     phoneNumberText?: string;
     closePopUp(): void;
 }
