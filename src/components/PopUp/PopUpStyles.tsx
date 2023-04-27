@@ -14,28 +14,29 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     inner_container: {
-        borderRadius: 3,
-        padding: 10,
-        width: width / 2,
+        borderRadius: 6,
+        width: width / 1.9,
         backgroundColor: 'white',
+        padding: 7
     },
     header_container: {
         display: 'flex',
-        flexDirection: 'row',
     },
     button: {
-        width: '15%',
+        alignItems: 'flex-end',
     },
     title_container: {
-        width: '85%',
-        alignItems: 'flex-end',
-        marginBottom: 5,
+        alignItems: 'center',
+        marginTop: -8,
     },
     title: {
         color: '#333333',
         fontWeight: '600',
         fontSize: 15,
-        lineHeight: 27,
+    },
+    body_container:{
+        paddingLeft: 5,
+        paddingTop: 5
     },
     label_value_container: {
         display: 'flex',
