@@ -8,21 +8,28 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#c0c0c0'
+        backgroundColor: 'rgba(0,16,35,0.6)'
     },
     inner_container: {
         width: width / 1.75,
-        height: height / 3.25,
+        height: height / 4,
         borderWidth: 1,
         borderRadius: 6,
         backgroundColor: '#fff',
         borderColor: '#fff',
         paddingHorizontal: 7,
     },
-    message_container: {
-        flex: 0.75,
-        justifyContent: 'flex-end'
+    cancel_button: {
+        alignItems: 'flex-end',
+        paddingTop: 5,
     },
+    body_container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        height: '80%'
+    },
+
     email_value: {
         fontWeight: '600',
         textDecorationLine: 'underline',
@@ -36,30 +43,18 @@ export default StyleSheet.create({
         color: '#333333',
     },
     buttons_container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: -12,
     },
     exit_button: {
-        marginBottom: 6,
         width: '85%',
-        backgroundColor: '#FF0111',
+        backgroundColor: '#DF2E38',
         paddingVertical: 6,
         borderRadius: 50,
     },
     text_of_exit_button: {
         textAlign: 'center',
-        color: '#fff',
+        color: '#ffffff',
     },
-    cancel_button: {
-        width: '85%',
-        backgroundColor: '#1E90FF',
-        paddingVertical: 6,
-        borderRadius: 50,
-    },
-    text_of_cancel_button: {
-        textAlign: 'center',
-        color: '#fff',
-    }
+
 })
