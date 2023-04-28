@@ -3,12 +3,16 @@ import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import styles from './SignInStyles';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { useDispatch } from 'react-redux';
+import { setActiveUser } from '../../redux/user/userSlice';
 
 
 const SignIn = () => {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+    const dispatch = useDispatch();
 
     const onChangeEmail = (text: string) => {
         setEmail(text);
@@ -21,11 +25,12 @@ const SignIn = () => {
     const onSubmit = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log("Giriş başarıyla tamamlandı");
-                setEmail('');
-                setPassword('');
+                // Signed in  
+                const user = {
+                    email: userCredential.user.email,
+                    uid: userCredential.user.uid
+                }
+                dispatch(setActiveUser(user));
                 // ...
             })
             .catch((error) => {
