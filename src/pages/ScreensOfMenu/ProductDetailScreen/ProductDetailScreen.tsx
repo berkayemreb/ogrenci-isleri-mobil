@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styles from './ProductDetailScreenStyles';
 
-interface ProductProps {
+interface ProductDetailProps {
     name?: string,
     price?: number,
     image?: string,
@@ -15,7 +15,7 @@ interface ProductProps {
 
 const ProductDetailScreen = () => {
     const route: any = useRoute();
-    const [product, setProduct] = useState<ProductProps>({});
+    const [product, setProduct] = useState<ProductDetailProps>({});
     const { firstItemId, secondItemId, thirdItemId } = route.params;
 
 
@@ -23,9 +23,7 @@ const ProductDetailScreen = () => {
         const dbRef = ref(getDatabase());
         get(child(dbRef, `menu/${firstItemId}/bottomCategories/${secondItemId}/products/${thirdItemId}`)).then((snapshot) => {
             if (snapshot.exists()) {
-                console.log("firebaseden gelen hali", snapshot.val());
                 const data = snapshot.val();
-                console.log("DATA:", data);
                 setProduct(data);
             } else {
                 console.log("No data available");

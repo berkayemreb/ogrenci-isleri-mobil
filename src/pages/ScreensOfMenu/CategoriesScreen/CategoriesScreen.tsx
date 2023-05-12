@@ -3,12 +3,13 @@ import { FlatList, SafeAreaView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styles from './CategoriesScreenStyles';
-import Products from '../../components/Products';
+import SubCategory from '../../../components/componentsForMenu/SubCategory';
+
 
 interface itemOfMenuProps {
     item: {
         id: string,
-        topCategory?: string,
+        category?: string,
     }
 }
 
@@ -50,7 +51,7 @@ const CategoriesScreen = () => {
         navigation.navigate('ProductsScreen', params);
     }
 
-    const renderCategoryName = ({ item }: itemOfMenuProps) => (<Products item={item} onClick={() => onClickCategory(item.id)} />)
+    const renderCategoryName = ({ item }: itemOfMenuProps) => (<SubCategory item={item} onClick={() => onClickCategory(item.id)} />)
 
     return (
         <SafeAreaView>

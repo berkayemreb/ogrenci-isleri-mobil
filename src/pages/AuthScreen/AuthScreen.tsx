@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Image, Text, TouchableOpacity } from 'react-native';
 import styles from './AuthScreenStyles';
-import SignIn from '../../components/SignIn';
-import SignUp from '../../components/SignUp';
+import SignIn from '../../components/componentsForAuth/SignIn';
+import SignUp from '../../components/componentsForAuth/SignUp';
 
 const AuthScreen = () => {
 

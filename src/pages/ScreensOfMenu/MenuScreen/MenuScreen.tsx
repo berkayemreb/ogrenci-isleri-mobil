@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView, View, Text } from 'react-native';
 import styles from './MenuScreenStyles';
 import { getDatabase, ref, child, get } from "firebase/database";
 import { useNavigation } from '@react-navigation/native';
-import Products from '../../components/Products';
+import ParentCategory from '../../../components/componentsForMenu/ParentCategory';
 
 interface itemOfMenuProps {
     item: {
         id: string,
-        topCategory?: string,
+        title?: string,
     }
 }
 
@@ -46,10 +46,10 @@ const MenuScreen = () => {
         navigation.navigate('CategoriesScreen', params);
     }
 
-    const renderCategoryName = ({ item }: itemOfMenuProps) => (<Products item={item} onClick={() => onClickCategory(item.id)} />)
+    const renderCategoryName = ({ item }: itemOfMenuProps) => (<ParentCategory item={item} onClick={() => onClickCategory(item.id)} />)
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <FlatList
                 data={data}
                 renderItem={renderCategoryName}

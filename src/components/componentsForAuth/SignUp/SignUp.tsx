@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { View, TextInput, TouchableOpacity, Text, Alert, ActivityIndicator } from 'react-native';
 import styles from './SignUpStyles';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { auth } from '../../../firebase';
 import { useDispatch } from "react-redux";
-import { setActiveUser } from "../../redux/user/userSlice";
+import { setActiveUser } from "../../../redux/user/userSlice";
 
 const SignUp = () => {
 
