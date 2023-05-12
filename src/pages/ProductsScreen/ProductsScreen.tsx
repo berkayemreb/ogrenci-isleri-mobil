@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
-import styles from './MenuScreenStyles';
+import { SafeAreaView, FlatList } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import styles from './ProductsScreenStyles';
 import { getDatabase, ref, child, get } from "firebase/database";
-import { useNavigation } from '@react-navigation/native';
 import Products from '../../components/Products';
 
 interface itemOfMenuProps {
@@ -12,23 +12,25 @@ interface itemOfMenuProps {
     }
 }
 
-const MenuScreen = () => {
-    const [data, setData] = useState([]);
+const ProductsScreen = () => {
 
+    const route: any = useRoute();
     const navigation: any = useNavigation();
 
-    useEffect(() => {
+    const { firstItemId, secondItemId } = route.params;
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
         const dbRef = ref(getDatabase());
-        get(child(dbRef, `menu`)).then((snapshot) => {
+        get(child(dbRef, `menu/${firstItemId}/bottomCategories/${secondItemId}/products`)).then((snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
-
                 const newData: any = Object.keys(data).map(key => ({
                     id: key,
                     ...data[key]
                 }));
-                setData(newData);
+                setData(newData)
 
 
             } else {
@@ -40,23 +42,26 @@ const MenuScreen = () => {
     }, [])
 
     const onClickCategory = (id: string) => {
+
         const params = {
-            itemId: id,
+            firstItemId,
+            secondItemId,
+            thirdItemId: id,
         };
-        navigation.navigate('CategoriesScreen', params);
+        navigation.navigate('ProductDetailScreen', params);
     }
 
-    const renderCategoryName = ({ item }: itemOfMenuProps) => (<Products item={item} onClick={() => onClickCategory(item.id)} />)
+    const renderProduct = ({ item }: itemOfMenuProps) => (<Products item={item} onClick={() => onClickCategory(item.id)} />)
 
     return (
         <SafeAreaView>
             <FlatList
                 data={data}
-                renderItem={renderCategoryName}
+                renderItem={renderProduct}
                 keyExtractor={item => item.id}
             />
         </SafeAreaView>
     )
 }
 
-export default MenuScreen;
+export default ProductsScreen;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
-import styles from './MenuScreenStyles';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { getDatabase, ref, child, get } from "firebase/database";
-import { useNavigation } from '@react-navigation/native';
+import styles from './CategoriesScreenStyles';
 import Products from '../../components/Products';
 
 interface itemOfMenuProps {
@@ -12,15 +12,18 @@ interface itemOfMenuProps {
     }
 }
 
-const MenuScreen = () => {
-    const [data, setData] = useState([]);
+const CategoriesScreen = () => {
 
+    const route: any = useRoute();
     const navigation: any = useNavigation();
 
-    useEffect(() => {
+    const { itemId } = route.params;
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
         const dbRef = ref(getDatabase());
-        get(child(dbRef, `menu`)).then((snapshot) => {
+        get(child(dbRef, `menu/${itemId}/bottomCategories`)).then((snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
 
@@ -41,9 +44,10 @@ const MenuScreen = () => {
 
     const onClickCategory = (id: string) => {
         const params = {
-            itemId: id,
+            firstItemId: itemId,
+            secondItemId: id,
         };
-        navigation.navigate('CategoriesScreen', params);
+        navigation.navigate('ProductsScreen', params);
     }
 
     const renderCategoryName = ({ item }: itemOfMenuProps) => (<Products item={item} onClick={() => onClickCategory(item.id)} />)
@@ -59,4 +63,4 @@ const MenuScreen = () => {
     )
 }
 
-export default MenuScreen;
+export default CategoriesScreen;
