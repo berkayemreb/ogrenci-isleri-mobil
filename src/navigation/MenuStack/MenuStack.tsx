@@ -8,11 +8,54 @@ const Stack = createNativeStackNavigator();
 
 const MenuStack = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="MenuScreen" component={MenuScreen} />
-            <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
-            <Stack.Screen name="ProductsScreen" component={ProductsScreen} />
-            <Stack.Screen name="ProductDetailScreen" component={ProductDetailScreen} />
+        <Stack.Navigator >
+            <Stack.Screen
+                name="MenuScreen"
+                component={MenuScreen}
+                options={
+                    {
+                        headerTintColor: '#4475a6',
+                        headerTitleAlign: 'center',
+                        headerTitle: 'Menü',
+
+                    }
+
+                } />
+            <Stack.Screen
+                name="CategoriesScreen"
+                component={CategoriesScreen}
+                options={
+                    {
+                        headerTintColor: '#4475a6',
+                        headerTitleAlign: 'center',
+                        headerTitle: 'Kategoriler',
+                    }
+
+                } />
+            <Stack.Screen
+                name="ProductsScreen"
+                component={ProductsScreen}
+                options={
+                    {
+                        headerTintColor: '#4475a6',
+                        headerTitleAlign: 'center',
+                        headerTitle: 'Ürünler',
+
+                    }
+
+                } />
+            <Stack.Screen
+                name="ProductDetailScreen"
+                component={ProductDetailScreen}
+                options={
+                    {
+                        headerTintColor: '#4475a6',
+                        headerTitleAlign: 'center',
+                        headerTitle: 'Ürün Detay',
+
+                    }
+
+                } />
         </Stack.Navigator>
     )
 }

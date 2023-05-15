@@ -1,9 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+
 
 export default StyleSheet.create({
 
     container: {
+        flex: 1,
+        backgroundColor: '#aac6d3',
+        justifyContent: 'center',
     },
-    
+    inner_container: {
+        width: windowWidth,
+    }
+
+
 
 })

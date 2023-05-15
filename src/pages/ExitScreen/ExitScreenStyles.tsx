@@ -8,7 +8,8 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0,16,35,0.6)'
+        backgroundColor: '#B9C4CF',
+
     },
     inner_container: {
         width: width / 1.75,

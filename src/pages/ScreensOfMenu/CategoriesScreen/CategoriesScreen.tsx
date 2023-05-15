@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styles from './CategoriesScreenStyles';
@@ -54,12 +54,15 @@ const CategoriesScreen = () => {
     const renderCategoryName = ({ item }: itemOfMenuProps) => (<SubCategory item={item} onClick={() => onClickCategory(item.id)} />)
 
     return (
-        <SafeAreaView>
-            <FlatList
-                data={data}
-                renderItem={renderCategoryName}
-                keyExtractor={item => item.id}
-            />
+        <SafeAreaView style={styles.container}>
+            <View style={styles.inner_container}>
+                <FlatList
+                    data={data}
+                    renderItem={renderCategoryName}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+
         </SafeAreaView>
     )
 }

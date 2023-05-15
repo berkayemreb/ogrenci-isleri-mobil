@@ -50,11 +50,13 @@ const MenuScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList
-                data={data}
-                renderItem={renderCategoryName}
-                keyExtractor={item => item.id}
-            />
+            <View style={styles.inner_container}>
+                <FlatList
+                    data={data}
+                    renderItem={renderCategoryName}
+                    keyExtractor={item => item.id}
+                />
+            </View>
         </SafeAreaView>
     )
 }
