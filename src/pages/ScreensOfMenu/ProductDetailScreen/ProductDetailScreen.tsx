@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { getDatabase, ref, child, get } from "firebase/database";
 import styles from './ProductDetailScreenStyles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 interface ProductDetailProps {
     name?: string,
@@ -36,11 +38,20 @@ const ProductDetailScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text>ProductDetailScreen Page!</Text>
-            <Text>{product.name}</Text>
-            <Text>{product.price} TL</Text>
-            <Text>{product.image}</Text>
-            {product.description && (<Text>{product.description.contents}</Text>)}
+            <View style={styles.image_container}>
+                <Image style={styles.image} source={{ uri: product.image }} />
+            </View>
+            <View style={styles.inner_container}>
+                <View style={styles.header_contanier}>
+                    <Text style={styles.headerName}>{product.name}</Text>
+                    {product.description && (<Text style={styles.description}>{product.description.contents}</Text>)}
+                    <View style={styles.line}></View>
+                    <View style={styles.price_container}>
+                        <Text style={styles.price}>{product.price}</Text>
+                        <MaterialCommunityIcons name="currency-try" style={styles.price_icon} size={20} color="#333333" />
+                    </View>
+                </View>
+            </View>
         </View>
     )
 }

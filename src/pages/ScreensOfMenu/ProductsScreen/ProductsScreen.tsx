@@ -9,7 +9,8 @@ interface itemOfMenuProps {
     item: {
         id: string,
         name?: string,
-    }
+    },
+    index: number
 }
 
 const ProductsScreen = () => {
@@ -41,7 +42,7 @@ const ProductsScreen = () => {
         });
     }, [])
 
-    const onClickCategory = (id: string) => {
+    const onClickProduct = (id: string) => {
 
         const params = {
             firstItemId,
@@ -51,15 +52,16 @@ const ProductsScreen = () => {
         navigation.navigate('ProductDetailScreen', params);
     }
 
-    const renderProduct = ({ item }: itemOfMenuProps) => (<Product item={item} onClick={() => onClickCategory(item.id)} />)
+    const renderProduct = ({ item, index }: itemOfMenuProps) => (<Product item={item} index={index} onClick={() => onClickProduct(item.id)} />)
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <FlatList
                 data={data}
                 renderItem={renderProduct}
                 keyExtractor={item => item.id}
             />
+
         </SafeAreaView>
     )
 }
