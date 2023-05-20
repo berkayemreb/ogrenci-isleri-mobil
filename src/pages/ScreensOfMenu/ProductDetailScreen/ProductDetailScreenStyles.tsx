@@ -7,7 +7,6 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#e6e6e6',
-
     },
     image_container: {
         alignItems: 'center',
@@ -15,9 +14,9 @@ export default StyleSheet.create({
     },
     image: {
         width: "80%",
-        height: heightOfDevice / 3,
+        height: heightOfDevice / 4,
         resizeMode: 'stretch',
-        borderRadius: 70
+        borderRadius: 50
     },
     inner_container: {
         flex: 1,

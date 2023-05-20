@@ -6,6 +6,7 @@ const heightOfScreen = Dimensions.get('screen').height;
 export default StyleSheet.create({
     container: {
         marginVertical: 10,
+        alignItems:'center'
     },
     firstItem: {
         marginTop: 20,
