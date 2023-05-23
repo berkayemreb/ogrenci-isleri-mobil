@@ -4,9 +4,12 @@ const widthOfScreen = Dimensions.get('screen').width;
 const heightOfScreen = Dimensions.get('screen').height;
 
 export default StyleSheet.create({
+    outer_container: {
+        width: widthOfScreen,
+        alignItems: 'center',
+    },
     container: {
         marginVertical: 10,
-        alignItems:'center'
     },
     firstItem: {
         marginTop: 20,
