@@ -10,12 +10,12 @@ export default StyleSheet.create({
         borderBottomRightRadius: 10,
     },
     input: {
+        height: 30,
         borderWidth: 1,
         borderColor: '#a0a0a0',
         marginHorizontal: 18,
         marginBottom: 15,
         paddingHorizontal: 7,
-        paddingVertical: 2,
         borderRadius: 5,
 
     },

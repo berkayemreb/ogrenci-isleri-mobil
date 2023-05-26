@@ -1,18 +1,15 @@
-import { StyleSheet, Dimensions } from 'react-native';
-
-const widthScreen = Dimensions.get("window").width;
-const heightScreen = Dimensions.get("window").height;
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
+        flex: 1,
     },
     normal_flow_container: {
     },
     out_flow_container: {
-        width: widthScreen / 1.10,
-        height: heightScreen / 1.25,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        position: 'absolute',
+        right: 18,
+        bottom: 32,
     },
     outside_button: {
         height: 75,

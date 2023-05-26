@@ -13,7 +13,7 @@ export default StyleSheet.create({
     },
     inner_container: {
         width: width / 1.75,
-        height: height / 4,
+        height: height / 4.5,
         borderWidth: 1,
         borderRadius: 6,
         backgroundColor: '#fff',
@@ -23,12 +23,11 @@ export default StyleSheet.create({
     cancel_button: {
         alignItems: 'flex-end',
         paddingTop: 5,
+        marginBottom: -20,
     },
     body_container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        height: '80%'
+        flex: 1,
+        justifyContent: 'center'
     },
 
     email_value: {
@@ -48,6 +47,7 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     exit_button: {
+        marginTop: 10,
         width: '85%',
         backgroundColor: '#DF2E38',
         paddingVertical: 6,

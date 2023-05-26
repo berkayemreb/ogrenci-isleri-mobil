@@ -1,8 +1,7 @@
 import React from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, Pressable, TextInput } from 'react-native';
 import styles from './EventScreenStyles';
 import { useNavigation } from '@react-navigation/native';
-
 
 const EventScreen = () => {
 

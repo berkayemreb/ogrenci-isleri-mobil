@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, Button } from 'react-native';
-import styles from './CreateEventScreenStyles';
+import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import ItemOfForm from '../../../components/componentsForEvents/ItemOfForm';
+import { Button, SafeAreaView, View } from 'react-native';
 import ErrorMessage from '../../../components/componentsForEvents/ErrorMessage';
+import ItemOfForm from '../../../components/componentsForEvents/ItemOfForm';
+import styles from './CreateEventScreenStyles';
+import DatePicker from '../../../components/componentsForEvents/DatePicker';
 
 type FormData = {
     editorName: string,
     phoneNumber: string,
     eventName: string,
-    date: any
 };
 
 const CreateEventScreen = () => {
@@ -71,6 +71,9 @@ const CreateEventScreen = () => {
                     defaultValue=""
                 />
                 {errors?.eventName && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
+
+                <DatePicker />
+
                 <Button title="Submit" onPress={handleSubmit(onSubmit)} />
             </View>
         </SafeAreaView>
