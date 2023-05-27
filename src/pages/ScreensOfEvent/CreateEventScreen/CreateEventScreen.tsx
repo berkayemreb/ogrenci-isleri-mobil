@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, SafeAreaView, View } from 'react-native';
 import ErrorMessage from '../../../components/componentsForEvents/ErrorMessage';
@@ -10,15 +10,20 @@ type FormData = {
     editorName: string,
     phoneNumber: string,
     eventName: string,
+    eventDate: any
 };
 
 const CreateEventScreen = () => {
+
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
 
     const onSubmit = (data: FormData) => {
         console.log(data);
     };
+
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -72,7 +77,18 @@ const CreateEventScreen = () => {
                 />
                 {errors?.eventName && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
 
-                <DatePicker />
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <DatePicker
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                    name="eventDate"
+                    defaultValue={new Date()}
+                />
+                {errors?.eventDate && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
 
                 <Button title="Submit" onPress={handleSubmit(onSubmit)} />
             </View>

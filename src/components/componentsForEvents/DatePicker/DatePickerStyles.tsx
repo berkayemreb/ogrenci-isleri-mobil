@@ -1,8 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    container: {
+        marginVertical: 10
+    },
+    inner_container: {
+        width: '70%',
+        marginTop: 5,
+    },
     label: {
-        marginVertical: 10,
         color: '#333333',
         fontWeight: '600',
     },
@@ -10,13 +16,17 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     icon: {
-        margin: 3,
+        marginTop: 2,
+        marginRight: 10
     },
-    input: {
+    text: {
         flex: 1,
         borderWidth: 1,
-        padding: 7,
-        marginLeft: 5,
-        borderRadius: 5,
+        borderRadius: 50,
+        padding: 5,
+        textAlign: 'center',
+        backgroundColor: '#ffffff',
+        borderColor: '#a0a0a0',
+        color: '#333333'
     }
 })
