@@ -7,5 +7,8 @@ export default StyleSheet.create({
     labelName: {
         fontWeight: '600',
         color: '#333333'
+    },
+    lastItem: {
+        marginTop: 0,
     }
 })

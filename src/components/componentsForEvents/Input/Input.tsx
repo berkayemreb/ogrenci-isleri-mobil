@@ -1,12 +1,13 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, KeyboardTypeOptions } from 'react-native';
 import styles from './InputStyles';
 
 interface InputProps {
     onChangeText(): void,
     onBlur(): void,
     value: string,
-    keyboardType?: any
+    keyboardType?: KeyboardTypeOptions,
+    multiline?: boolean,
 }
 
 const Input = (props: InputProps) => {
@@ -19,6 +20,9 @@ const Input = (props: InputProps) => {
                 cursorColor='#333333'
                 selectionColor='#c0c0c0'
                 keyboardType={props.keyboardType}
+                multiline={props.multiline}
+                numberOfLines={props.multiline ? 4 : 1}
+                textAlignVertical={props.multiline ? 'top' : 'auto'}
             />
         </View>
     )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Button, SafeAreaView, View } from 'react-native';
+import { Button, SafeAreaView, ScrollView, TouchableOpacity, Text } from 'react-native';
 import ErrorMessage from '../../../components/componentsForEvents/ErrorMessage';
 import ItemOfForm from '../../../components/componentsForEvents/ItemOfForm';
 import styles from './CreateEventScreenStyles';
@@ -13,11 +13,10 @@ type FormData = {
     eventName: string,
     eventDate: Date,
     eventTime: Date,
+    eventDescription: string,
 };
 
 const CreateEventScreen = () => {
-
-    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
 
@@ -25,11 +24,9 @@ const CreateEventScreen = () => {
         console.log(data);
     };
 
-
-
     return (
         <SafeAreaView style={styles.container}>
-            <View>
+            <ScrollView style={styles.inner_container}>
                 <Controller
                     control={control}
                     render={({ field: { onChange, onBlur, value } }) => (
@@ -105,8 +102,25 @@ const CreateEventScreen = () => {
                 />
                 {errors?.eventTime && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
 
-                <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-            </View>
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <ItemOfForm
+                            labelName='Etkinliğin Açıklaması'
+                            onChangeText={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            isLastItem
+                            multiline
+                        />
+                    )}
+                    name="eventDescription"
+                    defaultValue=""
+                />
+                <TouchableOpacity style={styles.button_container} onPress={handleSubmit(onSubmit)}>
+                    <Text style={styles.button_text}>Gönder</Text>
+                </TouchableOpacity>
+            </ScrollView >
         </SafeAreaView>
     )
 }

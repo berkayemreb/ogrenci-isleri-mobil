@@ -1,27 +1,31 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, KeyboardTypeOptions } from 'react-native';
 import styles from './ItemOfFormStyles';
 import Input from '../Input';
-import { FontAwesome5 } from '@expo/vector-icons';
-
 
 interface ItemOfFormProps {
     labelName: string,
     onChangeText(): void,
     onBlur(): void,
     value: string,
-    keyboardType?: string,
+    keyboardType?: KeyboardTypeOptions,
+    isLastItem?: boolean,
+    multiline?: boolean
 }
 
 const ItemOfForm = (props: ItemOfFormProps) => {
+
+    const lastItemStyle = props.isLastItem ? styles.lastItem : null;
+
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, lastItemStyle]}>
             <Text style={styles.labelName}>{props.labelName}</Text>
             <Input
                 onChangeText={props.onChangeText}
                 onBlur={props.onBlur}
                 value={props.value}
                 keyboardType={props.keyboardType}
+                multiline={props.multiline}
             />
         </View>
     )
