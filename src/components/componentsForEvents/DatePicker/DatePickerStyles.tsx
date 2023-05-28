@@ -11,6 +11,7 @@ export default StyleSheet.create({
     label: {
         color: '#333333',
         fontWeight: '600',
+        fontSize: 15,
     },
     calendar_container: {
         flexDirection: 'row',

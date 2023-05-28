@@ -6,6 +6,7 @@ export default StyleSheet.create({
     },
     labelName: {
         fontWeight: '600',
+        fontSize: 15,
         color: '#333333'
     },
     lastItem: {

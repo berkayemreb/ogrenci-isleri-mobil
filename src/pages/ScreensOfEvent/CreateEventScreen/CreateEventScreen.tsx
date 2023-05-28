@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { Button, SafeAreaView, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, ScrollView, TouchableOpacity, Text } from 'react-native';
 import ErrorMessage from '../../../components/componentsForEvents/ErrorMessage';
 import ItemOfForm from '../../../components/componentsForEvents/ItemOfForm';
 import styles from './CreateEventScreenStyles';
+import EventType from '../../../components/componentsForEvents/EventType';
+
 import DatePicker from '../../../components/componentsForEvents/DatePicker';
 import TimePicker from '../../../components/componentsForEvents/TimePicker';
 
@@ -14,6 +16,7 @@ type FormData = {
     eventDate: Date,
     eventTime: Date,
     eventDescription: string,
+    eventType: string
 };
 
 const CreateEventScreen = () => {
@@ -75,6 +78,20 @@ const CreateEventScreen = () => {
                     defaultValue=""
                 />
                 {errors?.eventName && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
+
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <EventType
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                    name="eventType"
+                    rules={{ required: true }}
+                    defaultValue=""
+                />
+                {errors?.eventType && <ErrorMessage message='Herhangi birini seçmek zorundasınız.' />}
 
                 <Controller
                     control={control}
