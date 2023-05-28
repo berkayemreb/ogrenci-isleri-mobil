@@ -5,12 +5,14 @@ import ErrorMessage from '../../../components/componentsForEvents/ErrorMessage';
 import ItemOfForm from '../../../components/componentsForEvents/ItemOfForm';
 import styles from './CreateEventScreenStyles';
 import DatePicker from '../../../components/componentsForEvents/DatePicker';
+import TimePicker from '../../../components/componentsForEvents/TimePicker';
 
 type FormData = {
     editorName: string,
     phoneNumber: string,
     eventName: string,
-    eventDate: any
+    eventDate: Date,
+    eventTime: Date,
 };
 
 const CreateEventScreen = () => {
@@ -89,6 +91,19 @@ const CreateEventScreen = () => {
                     defaultValue={new Date()}
                 />
                 {errors?.eventDate && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
+
+                <Controller
+                    control={control}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <TimePicker
+                            value={value}
+                            onChange={onChange}
+                        />
+                    )}
+                    name="eventTime"
+                    defaultValue={new Date()}
+                />
+                {errors?.eventTime && <ErrorMessage message='Bu alanı doldurmak zorunludur.' />}
 
                 <Button title="Submit" onPress={handleSubmit(onSubmit)} />
             </View>
