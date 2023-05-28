@@ -9,6 +9,10 @@ import EventType from '../../../components/componentsForEvents/EventType';
 import DatePicker from '../../../components/componentsForEvents/DatePicker';
 import TimePicker from '../../../components/componentsForEvents/TimePicker';
 
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import { db } from '../../../firebase';
+import { useNavigation } from '@react-navigation/native';
+
 type FormData = {
     editorName: string,
     phoneNumber: string,
@@ -21,10 +25,15 @@ type FormData = {
 
 const CreateEventScreen = () => {
 
+    const navigation = useNavigation<any>();
+
     const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
 
-    const onSubmit = (data: FormData) => {
-        console.log(data);
+    const onSubmit = async (data: FormData) => {
+        const querySnapshot = await getDocs(collection(db, "events"));
+        const length = querySnapshot.size + 1;
+        await setDoc(doc(db, "events", length.toString()), data);
+        navigation.navigate('EventScreen');
     };
 
     return (
