@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, FlatList, TouchableWithoutFeedback, Image } from 'react-native';
 import styles from './EventScreenStyles';
+import eventItemStyles from '../../../components/componentsForEvents/Event/EventStyles';
 import { useNavigation } from '@react-navigation/native';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebase';
 import { useIsFocused } from "@react-navigation/native";
+import { MaterialIcons } from '@expo/vector-icons';
 
 interface EventProps {
     id: any,
@@ -48,7 +50,7 @@ const EventScreen = () => {
     // ... bileşenin geri kalan kısmı ...
     console.log('DATA:', events);
 
-    const renderEvent = ({ item }: any) => (<Event item={item} />)
+    const renderEvent = ({ item, index }: any) => (<Event item={item} index={index} />)
 
     return (
         <SafeAreaView style={styles.container}>
@@ -69,10 +71,45 @@ const EventScreen = () => {
 export default EventScreen;
 
 const Event = (props: any) => {
+
+
+    const itemStyle = props.index === 0 ? eventItemStyles.firstItem : null;
+
+    let imageSource;
+    switch (props.item.eventType) {
+        case 'Bilgi Yarışması':
+            imageSource = require('../../../../assets/images/bilgi-yarismasi.jpg');
+            break;
+        case 'Film Gecesi':
+            imageSource = require('../../../../assets/images/film-gecesi.jpg');
+            break;
+        case 'Kahvaltı Buluşması':
+            imageSource = require('../../../../assets/images/kahvalti-bulusmasi.jpg');
+            break;
+        case 'Tanışma Etkinliği':
+            imageSource = require('../../../../assets/images/tanisma-etkinligi.jpg');
+            break;
+        default:
+            imageSource = require('../../../../assets/images/default.jpg');
+            break;
+    }
+
+
     return (
-        <TouchableOpacity onPress={() => { console.log('tıklanan Id:', props.item.id) }} >
-            <Text>{props.item.editorName}</Text>
-            <Text>{props.item.id}</Text>
-        </TouchableOpacity>
+        <View style={eventItemStyles.outer_container}>
+            <TouchableWithoutFeedback onPress={() => { console.log("Gönderilecek DATA:", props.item) }}>
+                <View style={[eventItemStyles.container, itemStyle]}>
+                    <View>
+                        <Image style={eventItemStyles.image} source={imageSource} />
+                        <View style={eventItemStyles.inner_container}>
+                            <View style={eventItemStyles.name_container}>
+                                <Text style={eventItemStyles.name}>{props.item.eventType}</Text>
+                            </View>
+                            <MaterialIcons name="keyboard-arrow-right" size={24} color="#ffffff" style={eventItemStyles.icon} />
+                        </View>
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
+        </View>
     )
 }
