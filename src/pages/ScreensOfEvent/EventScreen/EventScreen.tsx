@@ -72,10 +72,11 @@ export default EventScreen;
 
 const Event = (props: any) => {
 
+    const navigation: any = useNavigation();
 
     const itemStyle = props.index === 0 ? eventItemStyles.firstItem : null;
 
-    let imageSource;
+    let imageSource: number;
     switch (props.item.eventType) {
         case 'Bilgi Yarışması':
             imageSource = require('../../../../assets/images/bilgi-yarismasi.jpg');
@@ -94,10 +95,13 @@ const Event = (props: any) => {
             break;
     }
 
+    const onClickEventItem = () => {
+        navigation.navigate('EventDetailScreen', { item: props.item, imageSource });
+    }
 
     return (
         <View style={eventItemStyles.outer_container}>
-            <TouchableWithoutFeedback onPress={() => { console.log("Gönderilecek DATA:", props.item) }}>
+            <TouchableWithoutFeedback onPress={onClickEventItem}>
                 <View style={[eventItemStyles.container, itemStyle]}>
                     <View>
                         <Image style={eventItemStyles.image} source={imageSource} />
